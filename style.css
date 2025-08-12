@@ -78,3 +78,37 @@ button:hover {
     background-color: #2980b9;
     transform: translateY(-2px);
 }
+
+/* --- New Styles for Animated Pop-up Message --- */
+
+#popup-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, -150%); /* Start off-screen */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    font-weight: 500;
+    z-index: 1000;
+    transition: transform 0.4s ease-in-out;
+}
+
+#popup-message.show {
+    transform: translate(-50%, 0); /* Move into view */
+}
+
+#popup-message.success {
+    background-color: #2ecc71; /* Green for success */
+}
+
+#popup-message.error {
+    background-color: #e74c3c; /* Red for error */
+}
+
+#popup-text {
+    margin: 0;
+    padding: 0;
+}

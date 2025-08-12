@@ -1,19 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
     const artForm = document.getElementById('artForm');
-    //heellooooo
+    const popup = document.getElementById('popup-message');
+    const popupText = document.getElementById('popup-text');
+    let popupTimer;
+
+    function showMessage(message, type) {
+        clearTimeout(popupTimer);
+
+        popupText.textContent = message;
+        popup.className = type;
+        popup.classList.add('show');
+
+        popupTimer = setTimeout(() => {
+            popup.classList.remove('show');
+        }, 3000);
+    }
+
     artForm.addEventListener('submit', function(event) {
-        event.preventDefault(); 
+        event.preventDefault();
 
         const emailInput = document.getElementById('email');
         const email = emailInput.value;
-
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (emailRegex.test(email)) {
-            alert('Registration Successful');
-            artForm.reset(); 
+            showMessage('Registration Successful!', 'success');
+            artForm.reset();
         } else {
-            alert('Please enter a valid email address.');
+            showMessage('Please enter a valid email address.', 'error');
             emailInput.focus();
         }
     });
